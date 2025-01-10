@@ -1,0 +1,66 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    hostname: mysql
+    ports:
+      - "0.0.0.0:3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      blog:
+        aliases:
+          - mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=blog
+      - MYSQL_ROOT_PASSWORD=root
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+
+  api:
+    build:
+      context: ./blog-system-back
+      dockerfile: Dockerfile
+    container_name: blog-system-back
+    ports:
+      - "3001:3001"
+    networks:
+      blog:
+        aliases:
+          - api
+    depends_on:
+      - mysql
+    environment:
+      - PORT=3001
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=blog
+
+  frontend:
+    build:
+      context: ./blog-system-front
+      dockerfile: Dockerfile
+    container_name: blog-system-frontend
+    ports:
+      - "3000:3000"
+    networks:
+      blog:
+        aliases:
+          - frontend
+    depends_on:
+      - mysql
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001/api
+
+networks:
+  blog:
+
+volumes:
+  mysql-data:
