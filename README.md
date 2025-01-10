@@ -29,7 +29,8 @@ $ git clone https://github.com/gabrielmendesdev/project-blog-system.git
 
 ```bash
 # navegando até a pasta do projeto
-$ cd ./blog-system-project
+$ cd ./project-blog-system
+
 
 # inicializando os projetos e banco de dados
 $ docker-compose up -d
