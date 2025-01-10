@@ -18,7 +18,7 @@ Para rodar o projeto, você precisará de uma única ferramenta previamente inst
 Para baixar o repositório localmente, basta utilizar o seguinte comando em seu terminal de preferência:
 
 ```bash
-$ git clone https://github.com/gabrielmendesdev/blog-system-project.git
+$ git clone https://github.com/gabrielmendesdev/project-blog-system.git
 ```
 
 ### Rodando o projeto
