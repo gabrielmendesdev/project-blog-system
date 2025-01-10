@@ -60,4 +60,4 @@ Pronto! Assim que todos os containers forem inicializados, você pode acessar a 
 
 <p>Para o futuro, talvez seja interessante explorar mais os middlewares do Express, como criar funções que auxiliariam na autenticação de usuários, por exemplo. Ou até mesmo utilizar um framework para criar algo mais robusto, como o NestJS. Outro ponto que achei interessante mas que não tive tempo de explorar mais e implementar, foi sobre as <i>migrations</i> do Sequelize. Dessa maneira a própria aplicação ficaria responsável por criar as tabelas que ela precisa no banco de dados.</p>
 
-<p>Para o lado do cliente, creio que seja interessante </p>
+<p>Para o lado do cliente, creio que seja interessante futuramente adicionar autenticações e sistema de login, e também dividir entre usuários e admnistradores, para que a permissão de deletar e criar posts seja funcionalidade apenas dos admins. Talvez uma autenticação JWT, com as informações do usuário sendo manipuladas através do NextAuth trariam consistência a aplicação.</p>
